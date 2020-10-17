@@ -9,5 +9,28 @@
       "**/*"
     ],
     "description": ""
+  },
+  "ios": {
+    "infoPlist": {
+      "LSApplicationQueriesSchemes": [
+        "yandexmaps",
+        "comgooglemaps",
+        "citymapper",
+        "uber",
+        "lyft",
+        "transit",
+        "truckmap",
+        "waze",
+        "yandexnavi",
+        "moovit",
+        "yandextaxi",
+        "kakaomap",
+        "szn-mapy",
+        "mapsme",
+        "osmandmaps",
+        "gett",
+        "nmap"
+      ]
+    }
   }
 }

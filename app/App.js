@@ -8,7 +8,8 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import MapView from 'react-native-maps';
+import MapView, {TouchableHighlight} from 'react-native-maps';
+import { showLocation } from 'react-native-map-link'
 
 class App extends React.Component {
   constructor(props) {
@@ -78,10 +79,17 @@ class Marker extends React.Component {
       style = styles.circleGreen
     }
     return (
-    <MapView.Marker  coordinate={this.state.mark}>
-  <View style={style}>
-    <Text style={styles.pinText}>{this.state.free}</Text>
-   </View></MapView.Marker>
+    <MapView.Marker  coordinate={this.state.mark} onPress={() => {
+      console.log("this", this)
+      showLocation({
+        latitude: this.state.mark.latitude,
+        longitude: this.state.mark.longitude,
+      })
+    }}>
+          <View style={style}>
+            <Text style={styles.pinText}>{this.state.free}/{this.state.total}</Text>
+          </View>
+    </MapView.Marker>
     )
   }
 }
@@ -99,19 +107,19 @@ const styles = StyleSheet.create({
     margin: 20,
   },
   circleRed: {
-    width: 30,
+    width: 60,
     height: 30,
     borderRadius: 30 / 2,
     backgroundColor: 'red',
   },
   circleYellow: {
-    width: 30,
+    width: 60,
     height: 30,
     borderRadius: 30 / 2,
     backgroundColor: '#edbf37',
   },
   circleGreen: {
-    width: 30,
+    width: 60,
     height: 30,
     borderRadius: 30 / 2,
     backgroundColor: 'green',
