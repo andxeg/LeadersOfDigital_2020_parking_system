@@ -60,7 +60,7 @@
                 required: ["status"]
 
   /v1/parkings/custom:
-    get:
+    post:
       tags:
         - parkings
       operationId: "api.v1.rospark_web.get_parkings_custom"
