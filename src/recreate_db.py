@@ -1,6 +1,6 @@
 from sqlalchemy import create_engine
 from config import MYSQL_ROSPARK_DB
-from db.ids_db import Base, make_engine
+from db.rospark_db import Base, make_engine
 
 
 try:

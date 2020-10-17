@@ -7,8 +7,7 @@ import datetime
 import connexion
 import collections
 from collections import OrderedDict
-from sqlalchemy import asc
-from sqlalchemy import and_
+from sqlalchemy import asc, and_, func
 from celery.result import AsyncResult
 from flask import current_app, jsonify
 
@@ -47,7 +46,7 @@ def get_parkings_custom():
         latitude  = data["latitude"]
         radius    = data["radius"]
 
-        kmInLongitudeDegree = 111.320 * math.cos( latitude / 180.0 * math.PI)
+        kmInLongitudeDegree = 111.320 * math.cos( latitude / 180.0 * math.pi)
 
         delta_lat = radius / 111.1;
         delta_long = radius / kmInLongitudeDegree;
@@ -55,8 +54,8 @@ def get_parkings_custom():
         qs = current_app.context.rospark_db_session()
         rows = (qs.query(
                         ParkingsRecordsTbl
-                    ).filter(and_(abs(ParkingsRecordsTbl.latitude - latitude) < delta_lat,
-                                  abs(ParkingsRecordsTbl.longitude - longitude) < delta_long)))
+                    ).filter(and_(func.abs(ParkingsRecordsTbl.latitude - latitude) < delta_lat,
+                                  func.abs(ParkingsRecordsTbl.longitude - longitude) < delta_long)))
         result = []
         for row in rows.all():
             result.append(row.serialize())
@@ -91,14 +90,14 @@ def save_parkings_info():
     try:
         data = json.loads(connexion.request.data, object_pairs_hook=collections.OrderedDict)
         
-        qs = context.rospark_db_session()
+        qs = current_app.context.rospark_db_session()
         record_db = ParkingsRecordsTbl(
             created_date=datetime.datetime.utcnow(),
             longitude=data["longitude"],
             latitude=data["latitude"],
             total=data["total"],
             free=data["free"],
-            photo=data["photo"])
+            photo=str.encode(data["photo"]))
 
         qs.add(record_db)
         qs.commit()
@@ -109,9 +108,7 @@ def save_parkings_info():
 
     return jsonify(dict(status="ok")), 200
 
-
-
-def delete_all_records():
+def delete_all_parkings_info():
     try:
         qs = current_app.context.rospark_db_session()
 

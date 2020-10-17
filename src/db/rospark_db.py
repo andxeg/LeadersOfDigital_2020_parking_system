@@ -48,11 +48,13 @@ class ParkingsRecordsTbl(Base):
 
     def serialize(self):
         return {
-            "created_date": str(self.created_date),
-            "longitude": float(self.longitude),
-            "latitude": float(self.latitude),
+            # "created_date": str(self.created_date),
+            "coordinate": {
+                "longitude": float(self.longitude),
+                "latitude": float(self.latitude)
+            },
             "total": int(self.total),
-            "free": int(self.flag),
+            "free": int(self.free),
             # "photo": str(self.photo)
         }
 

@@ -60,7 +60,7 @@ services:
       TASKS_PREFIX: "rospark_async"
       WAIT_HOSTS: rospark_redis:6379, rospark_mysql:3306
       WAIT_AFTER_HOSTS: 5
-    command: sh -c '/wait && celery -A app_worker worker --loglevel=info --pool=solo --concurrency=1 -Q rospark_async -O fair'
+    command: sh -c '/wait && celery -A app_worker worker --loglevel=INFO --pool=solo --concurrency=1 -Q rospark_async -O fair'
     restart: always
 
   rospark_redis:

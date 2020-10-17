@@ -5,7 +5,7 @@ import datetime
 
 from app_worker import celery_app, SqlAlchemyTask, context
 
-from db.ids_db import ParkingsRecordsTbl
+from db.rospark_db import ParkingsRecordsTbl
 
 
 @celery_app.task(base=SqlAlchemyTask, bind=True, time_limit=1200)
@@ -26,9 +26,9 @@ def parkings_photo_analysis(self, data):
             latitude=data["latitude"],
             total=total,
             free=free,
-            photo=data["photo"])
+            photo=str.encode(data["photo"]))
 
-        qs.add(records_db)
+        qs.add(record_db)
         qs.commit()
 
     except Exception as e:

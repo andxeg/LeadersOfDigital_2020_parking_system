@@ -9,9 +9,44 @@
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ParkingInfo'
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ParkingInfo'
+                required: ["status", "result"]
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
+
+    delete:
+      tags:
+        - parkings
+      operationId: "api.v1.rospark_web.delete_all_parkings_info"
+      responses:
+        200:
+          description: Delete all parkings information
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
         500:
           description: Internal Server Error
           content:
@@ -33,17 +68,17 @@
         required: true
         content:
           application/json:
-            type: object
-            additionalProperties: false
-            properties:
-              longitude:
-                type: number
-              latitude:
-                type: number
-              radius:
-                type: integer
-
-            required: ["longitude", "latitude", "radius"]
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                longitude:
+                  type: number
+                latitude:
+                  type: number
+                radius:
+                  type: integer
+              required: ["longitude", "latitude", "radius"]
 
       responses:
         200:
@@ -51,9 +86,16 @@
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: '#/components/schemas/ParkingInfo'
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                  result:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/ParkingInfo'
+                required: ["status", "result"]
         500:
           description: Internal Server Error
           content:
@@ -69,7 +111,7 @@
   /v1/parkings/save:
     post:
       tags:
-        - records
+        - parkings
       operationId: "api.v1.rospark_web.save_parkings_info"
       requestBody:
         required: true
@@ -94,6 +136,7 @@
 
       responses:
         200:
+          description: Response save parkings info
           content:
             application/json:
               schema:
@@ -118,7 +161,7 @@
   /v1/parkings/detect:
     post:
       tags:
-        - records
+        - parkings
       operationId: "api.v1.rospark_web.detect_parking"
       requestBody:
         required: true
@@ -139,6 +182,7 @@
 
       responses:
         200:
+          description: Response detect parkings
           content:
             application/json:
               schema:
