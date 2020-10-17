@@ -39,7 +39,10 @@ Backend contains 3 docker containers:
 
 Start and initilize database:
 ```bash
-# start.sh
+# start_test.sh
 # init.sh
 ```
+
+## Api description
+You can find API description [here](http://167.99.136.99/api/rospark/ui/)
 
