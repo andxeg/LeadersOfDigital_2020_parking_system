@@ -5,14 +5,10 @@ Mobile application you can find in `app` branch - [see here](https://github.com/
 
 
 <p float="left">
-	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_01.jpg?raw=true" width="340" height="660" />
-	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_02.jpg?raw=true" width="340" height="660" />
-
-</p>
-
-<p float="left">
-	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_03.jpg?raw=true" width="340" height="660" />
-	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_04.jpg?raw=true" width="340" height="660" />
+    <img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_01.jpg?raw=true" width="200" height="330" />
+    <img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_02.jpg?raw=true" width="200" height="330" />
+    <img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_03.jpg?raw=true" width="200" height="330" />
+    <img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_04.jpg?raw=true" width="200" height="330" />
 </p>
 
 ## Mobile Application. Animation
@@ -22,8 +18,8 @@ Mobile application you can find in `app` branch - [see here](https://github.com/
 
 ## Mobile Application. Try it now!
 
-1.	Install Expo application on Androind or iPhone [link](https://expo.io/)
-2.	Scan QR code [here](https://expo.io/@danielbitesdog/projects/rostelekom-parkings) or see it below
+1.  Install Expo application on Androind or iPhone [link](https://expo.io/)
+2.  Scan QR code [here](https://expo.io/@danielbitesdog/projects/rostelekom-parkings) or see it below
 
 ![QRCode](/screenshots/qr_code_expo.png?raw=true "QR code expo")
 
@@ -33,9 +29,11 @@ Based on YOLOv5 [see here](https://github.com/ultralytics/yolov5).
 
 Model weights you can find [here](https://github.com/andxeg/parking_system/tree/master/src/core/models)
 
-![Screenshot06](/screenshots/recognition_example_01.jpg?raw=true "Recognition Example 1")
 
-![Screenshot07](/screenshots/recognition_example_02.jpg?raw=true "Recognition Example 2")
+<p float="left">
+    <img src="https://github.com/andxeg/parking_system/blob/master/screenshots/recognition_example_01.jpg?raw=true" width="400" height="350" />
+    <img src="https://github.com/andxeg/parking_system/blob/master/screenshots/recognition_example_02.jpg?raw=true" width="400" height="350" />
+</p>
 
 ## Backend
 Backend you can find in `master` branch - [see here](https://github.com/andxeg/parking_system).
