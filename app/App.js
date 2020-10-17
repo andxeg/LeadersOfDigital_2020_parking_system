@@ -1,4 +1,3 @@
-// MapScreen.js
 import React, { Component } from 'react';
 import {
   StyleSheet,
@@ -9,13 +8,9 @@ import {
   Dimensions,
   TouchableOpacity,
 } from 'react-native';
-import { LinearGradient } from 'expo';
 import MapView from 'react-native-maps';
 
-class MapScreen extends React.Component {
-  _onPress() {
-    Alert.alert('You clicked a button');
-  }
+class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -36,6 +31,7 @@ class MapScreen extends React.Component {
     ],
     };
   }
+
   componentDidMount() {
     fetch('https://run.mocky.io/v3/99153520-ade4-4cdb-8034-9c42525a2542')
     .then((resp) => resp.json())
@@ -46,6 +42,7 @@ class MapScreen extends React.Component {
       // Error 🙁
     });
   }
+  
   render() {
     return (
       <View style={styles.container}>
@@ -128,8 +125,4 @@ const styles = StyleSheet.create({
   },
 });
 
-// <View style={styles.button}>
-//   <Button title="Button 1" onPress={this._onPress} />
-// </View>
-
-export default MapScreen;
+export default App;

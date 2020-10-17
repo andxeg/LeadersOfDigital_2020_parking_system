@@ -1,27 +1,13 @@
 {
+  "name": "rostelekom.parkings",
+  "displayName": "rostelekom.parkings",
   "expo": {
-    "name": "friend-location-check",
-    "slug": "snack-1ed9c150-cb81-48a7-847a-b28c6d1b9496",
+    "name": "rostelekom.parkings",
+    "slug": "rostelekom-parkings",
     "version": "1.0.0",
-    "orientation": "portrait",
-    "icon": "./assets/icon.png",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
     "assetBundlePatterns": [
       "**/*"
     ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "web": {
-      "favicon": "./assets/favicon.png"
-    },
-    "description": "Check location"
+    "description": ""
   }
 }
