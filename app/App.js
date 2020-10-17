@@ -41,11 +41,11 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://run.mocky.io/v3/9f07e3a7-f65a-4942-b272-afff80ef8712')
+    fetch('http://167.99.136.99/api/rospark/v1/parkings')
     .then((resp) => resp.json())
     .then(data => {
       // console.log("data", data); // DEBUG
-       this.setState({ marks: data });
+       this.setState({ marks: data.result });
     }).catch(err => {
       // Error 🙁
     });
