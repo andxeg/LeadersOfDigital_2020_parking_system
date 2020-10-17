@@ -34,7 +34,7 @@ class App extends React.Component {
   }
 
   componentDidMount() {
-    fetch('https://run.mocky.io/v3/99153520-ade4-4cdb-8034-9c42525a2542')
+    fetch('https://run.mocky.io/v3/9f07e3a7-f65a-4942-b272-afff80ef8712')
     .then((resp) => resp.json())
     .then(data => {
       console.log("data", data);
