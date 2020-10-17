@@ -3,9 +3,17 @@
 ## Mobile Application
 Mobile application you can find in `app` branch - [see here](https://github.com/andxeg/parking_system/tree/app)
 
-![Screenshot02](/screenshots/mobile_app_screenshot.png?raw=true "Mobile app")
 
-<!-- ![Animation](/screenshots/mobile_app.gif?raw=true) -->
+<p float="left">
+	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_01.jpg?raw=true" width="340" height="660" />
+	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_02.jpg?raw=true" width="340" height="660" />
+
+</p>
+
+<p float="left">
+	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_03.jpg?raw=true" width="340" height="660" />
+	<img src="https://github.com/andxeg/parking_system/blob/master/screenshots/mobile_app_screenshot_04.jpg?raw=true" width="340" height="660" />
+</p>
 
 ## Mobile Application. Animation
 
@@ -25,9 +33,9 @@ Based on YOLOv5 [see here](https://github.com/ultralytics/yolov5).
 
 Model weights you can find [here](https://github.com/andxeg/parking_system/tree/master/src/core/models)
 
-![Screenshot02](/screenshots/recognition_example_01.jpg?raw=true "Recognition Example 1")
+![Screenshot06](/screenshots/recognition_example_01.jpg?raw=true "Recognition Example 1")
 
-![Screenshot03](/screenshots/recognition_example_02.jpg?raw=true "Recognition Example 2")
+![Screenshot07](/screenshots/recognition_example_02.jpg?raw=true "Recognition Example 2")
 
 ## Backend
 Backend you can find in `master` branch - [see here](https://github.com/andxeg/parking_system).
