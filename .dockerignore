@@ -1,0 +1,3 @@
+venv/*
+docker_data/*
+.dockerignore

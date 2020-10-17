@@ -1,0 +1,34 @@
+openapi: "3.0.0"
+info:
+  title: "Rostelecom Parking service API"
+  version: "1"
+
+
+components:
+  schemas:
+    ParkingInfo:
+      type: object
+      additionalProperties: false
+      properties:
+        coordinate:
+          type: object
+          additionalProperties: false
+          properties:
+            longitude:
+              type: number
+            latitude:
+              type: number
+          required: ["longitude", "latitude"]
+        total:
+          type: integer
+        free:
+          type: integer
+
+      required: [
+        "coordinate",
+        "total",
+        "free"
+      ]
+
+paths:
+{% include "api/v1/rospark_web.yml" %}

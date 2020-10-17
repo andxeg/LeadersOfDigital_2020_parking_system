@@ -1,0 +1,76 @@
+version: '2.4'
+
+services:
+  rospark_mysql:
+    build:
+      context: .
+      dockerfile: dockerfiles/rospark_mysql/Dockerfile
+    environment:
+      MYSQL_ROOT_PASSWORD: msu_team_password
+      MYSQL_DATABASE: db_rospark
+      MYSQL_USER: msu_team
+      MYSQL_PASSWORD: msu_team_password
+    expose:
+      - "3306"
+    volumes:
+      - ./docker_data/rospark_mysql:/var/lib/mysql:Z
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    networks:
+      - rospark_network
+
+  rospark_web:
+    build:
+      context: .
+      dockerfile: dockerfiles/rospark/Dockerfile
+    ports:
+      - "0.0.0.0:80:8080"
+    expose:
+      - "8080"
+    networks:
+      - rospark_network
+    depends_on:
+      - rospark_mysql
+      - rospark_redis
+    environment:
+      HOST: "0.0.0.0"
+      PORT: "8080"    
+      MYSQL_ROSPARK_DB: "mysql://msu_team:msu_team_password@rospark_mysql:3306/db_rospark"
+      CELERY_REDIS: "redis://rospark_redis:6379"
+      TASKS_QUEUE: "rospark_async"
+      TASKS_PREFIX: "rospark_async"
+      WAIT_HOSTS: rospark_redis:6379, rospark_mysql:3306
+      WAIT_AFTER_HOSTS: 5
+    command: sh -c '/wait && uwsgi --http 0.0.0.0:8080 --mount /api/rospark=app_api:app --manage-script-name --processes 8 --master --enable-threads --lazy-apps -R 1000 --max-worker-lifetime 3600 --reload-on-rss 1024'
+    restart: always
+
+  rospark_worker_async:
+    build:
+      context: .
+      dockerfile: dockerfiles/rospark/Dockerfile
+    networks:
+      - rospark_network
+    depends_on:
+      - rospark_redis
+      - rospark_mysql
+    environment:
+      MYSQL_ROSPARK_DB: "mysql://msu_team:msu_team_password@rospark_mysql:3306/db_rospark"
+      CELERY_REDIS: "redis://rospark_redis:6379"
+      # TASKS_QUEUE: "rospark_async"
+      TASKS_PREFIX: "rospark_async"
+      WAIT_HOSTS: rospark_redis:6379, rospark_mysql:3306
+      WAIT_AFTER_HOSTS: 5
+    command: sh -c '/wait && celery -A app_worker worker --loglevel=info --pool=solo --concurrency=1 -Q rospark_async -O fair'
+    restart: always
+
+  rospark_redis:
+    image: redis
+    expose:
+      - "6379"
+    networks:
+      - rospark_network
+    restart: always
+
+networks:
+  rospark_network:
+    # external: true

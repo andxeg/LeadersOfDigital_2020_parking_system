@@ -1,0 +1,162 @@
+  /v1/parkings:
+    get:
+      tags:
+        - parkings
+      operationId: "api.v1.rospark_web.get_all_parkings"
+      responses:
+        200:
+          description: Response with all parkings info
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParkingInfo'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
+
+  /v1/parkings/custom:
+    get:
+      tags:
+        - parkings
+      operationId: "api.v1.rospark_web.get_parkings_custom"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            type: object
+            additionalProperties: false
+            properties:
+              longitude:
+                type: number
+              latitude:
+                type: number
+              radius:
+                type: integer
+
+            required: ["longitude", "latitude", "radius"]
+
+      responses:
+        200:
+          description: Response parkings by address and radius
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ParkingInfo'
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
+
+  /v1/parkings/save:
+    post:
+      tags:
+        - records
+      operationId: "api.v1.rospark_web.save_parkings_info"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                photo:
+                  type: string
+                longitude:
+                  type: number
+                latitude:
+                  type: number
+                total:
+                  type: integer
+                free:
+                  type: integer
+
+              required: ["photo", "longitude", "latitude", "total", "free"]
+
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
+
+  /v1/parkings/detect:
+    post:
+      tags:
+        - records
+      operationId: "api.v1.rospark_web.detect_parking"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                photo:
+                  type: string
+                longitude:
+                  type: number
+                latitude:
+                  type: number
+
+              required: ["photo", "longitude", "latitude"]
+
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
+        500:
+          description: Internal Server Error
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties: false
+                properties:
+                  status:
+                    type: string
+                required: ["status"]
+
